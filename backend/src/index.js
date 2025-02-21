@@ -1,12 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import connection from "./utils/db.js";
+import { connectToSocket } from "./utils/Socket.js";
 dotenv.config();
 const PORT = process.env.PORT || 3001;
 import cors from "cors";
 
 import { createServer } from "node:http";
-import { connectToSocket } from "./controllers/socketManager.js";
 
 import userRoutes from "./routes/user.routes.js";
 
