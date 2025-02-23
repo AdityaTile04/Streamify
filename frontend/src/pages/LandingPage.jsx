@@ -11,6 +11,8 @@ const LandingPage = () => {
         <div className="navList">
           <p>Join as Guest</p>
           <p>Register</p>
+
+          
           <div role="button">
             <p>Login</p>
           </div>
