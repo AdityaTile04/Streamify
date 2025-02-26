@@ -18,7 +18,6 @@ const LandingPage = () => {
           </div>
         </div>
       </nav>
-
       <div className="landingMainContainer">
         <div>
           <h1>
