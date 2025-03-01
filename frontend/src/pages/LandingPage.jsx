@@ -12,7 +12,7 @@ const LandingPage = () => {
         <div className="navList">
           <p>Join as Guest</p>
           <p>Register</p>
-          
+
           <div role="button">
             <p>Login</p>
           </div>
@@ -28,7 +28,7 @@ const LandingPage = () => {
           </h1>
           <p>Cover distance by Streamify</p>
           <div role="button">
-            <Link to={"/home"}>Get Started</Link>
+            <Link to={"/auth"}>Get Started</Link>
           </div>
         </div>
         <div>
@@ -38,6 +38,5 @@ const LandingPage = () => {
     </div>
   );
 };
-
 
 export default LandingPage;
