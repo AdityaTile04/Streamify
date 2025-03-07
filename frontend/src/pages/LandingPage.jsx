@@ -12,10 +12,6 @@ const LandingPage = () => {
         <div className="navList">
           <p>Join as Guest</p>
           <p>Register</p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6eaca413e9643d042449e1de4563a02eff0e3a49
           <div role="button">
             <p>Login</p>
           </div>
@@ -35,6 +31,7 @@ const LandingPage = () => {
         </div>
         <div>
           <img src="/mobile.png" alt="mobile_photo" />
+          <div></div>
         </div>
       </div>
     </div>
