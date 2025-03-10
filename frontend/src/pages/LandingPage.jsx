@@ -26,7 +26,7 @@ const LandingPage = () => {
           </h1>
           <p>Cover distance by Streamify</p>
           <div role="button">
-            <Link to={"/auth"}>Get Started</Link>
+            <Link to={"/signup"}>Get Started</Link>
           </div>
         </div>
         <div>
