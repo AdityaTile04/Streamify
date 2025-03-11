@@ -1,43 +1,67 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your signup logic here (e.g., API call)
+
     if (password !== confirmPassword) {
-      alert('Passwords do not match!');
+      toast.error("Passwords do not match!");
       return;
     }
-    console.log('Signup submitted:', { name, email, password });
+
+    try {
+      const response = await axios.post("http://localhost:3000/signup", {
+        username,
+        email,
+        password,
+      });
+
+      toast.success(response.data.message || "Signup successful!");
+      navigate("/"); // Redirect to login
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Sign Up
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-              Name
+            <label
+              htmlFor="username"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Username
             </label>
             <input
               type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your name"
+              placeholder="Enter your username"
               required
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 font-medium mb-2"
+            >
               Email
             </label>
             <input
@@ -51,7 +75,10 @@ const Signup = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-medium mb-2"
+            >
               Password
             </label>
             <input
@@ -64,8 +91,11 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="mb-6">
-            <label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-2">
+          <div className="mb-4">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-gray-700 font-medium mb-2"
+            >
               Confirm Password
             </label>
             <input
@@ -86,8 +116,8 @@ const Signup = () => {
           </button>
         </form>
         <p className="text-center text-gray-600 mt-4">
-          Already have an account?{' '}
-          <Link to="/" className="text-blue-500 hover:underline">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-500 hover:underline">
             Login
           </Link>
         </p>
