@@ -1,14 +1,29 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here (e.g., API call)
-    console.log("Login submitted:", { email, password });
+
+    try {
+      const response = await axios.post("http://localhost:3000/login", {
+        email,
+        password,
+      });
+
+      toast.success("Login successful!");
+      localStorage.setItem("token", response.data.token);
+      navigate("/"); 
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Invalid credentials!");
+    }
   };
 
   return (
