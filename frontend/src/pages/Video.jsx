@@ -55,11 +55,6 @@ export default function Video() {
 
   let [videos, setVideos] = useState([]);
 
-  // TODO
-  // if(isChrome() === false) {
-
-  // }
-
   useEffect(() => {
     console.log("HELLO");
     getPermissions();
