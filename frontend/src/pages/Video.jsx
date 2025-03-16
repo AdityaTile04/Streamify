@@ -433,11 +433,11 @@ export default function Video() {
 
   let handleVideo = () => {
     setVideo(!video);
-    // getUserMedia();
+    getUserMedia();
   };
   let handleAudio = () => {
     setAudio(!audio);
-    // getUserMedia();
+    getUserMedia();
   };
 
   useEffect(() => {
@@ -483,7 +483,7 @@ export default function Video() {
     socketRef.current.emit("chat-message", message, username);
     setMessage("");
 
-    // this.setState({ message: "", sender: username })
+    this.setState({ message: "", sender: username });
   };
 
   let connect = () => {
