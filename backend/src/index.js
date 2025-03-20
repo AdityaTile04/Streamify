@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 import connection from "./utils/db.js";
 import { connectToSocket } from "./utils/Socket.js";
 dotenv.config();
-const PORT = process.env.PORT || 3001;
 import cors from "cors";
+const PORT = process.env.PORT || 3001;
 
 import { createServer } from "node:http";
 
