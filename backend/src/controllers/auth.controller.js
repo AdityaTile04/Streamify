@@ -2,7 +2,6 @@ import bcrypt from "bcrypt";
 import { createSecretToken } from "../utils/createSecretToken.js";
 import User from "../models/user.model.js";
 
-// signup controller
 export const signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -21,7 +20,7 @@ export const signup = async (req, res) => {
     console.log(err);
   }
 };
-// login controller
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
